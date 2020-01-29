@@ -1,6 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 ;; Initializes the package infrastructure
 (package-initialize)
@@ -17,6 +17,7 @@
   '(better-defaults                 ;; Set up some better Emacs defaults
     elpy                            ;; emacs Lisp Python environment
     material-theme                  ;; Theme
+    flycheck                        ;; pylint enabling tool
     )
   )
 
@@ -33,6 +34,8 @@
 (setq inhibit-startup-message t)    ;; Hide the startup message
 (load-theme 'material t)            ;; Load material theme
 (add-hook 'prog-mode-hook 'linum-mode)
+(add-hook 'prog-mode-hook 'column-number-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; ====================================
 ;; Python Setup
@@ -52,7 +55,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (pyenv-mode-auto pyenv-mode gnu-elpa-keyring-update undo-tree volatile-highlights yasnippet))))
+    (flycheck pyenv-mode-auto pyenv-mode gnu-elpa-keyring-update undo-tree volatile-highlights yasnippet))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
