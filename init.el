@@ -36,6 +36,11 @@
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'column-number-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+;; Keep cursor at same position when scrolling
+(setq scroll-preserve-screen-position 1)
+;; Scroll window up.down by one line
+(global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
+(global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 
 ;; ====================================
 ;; Python Setup
