@@ -32,6 +32,7 @@
 ;; Basic Customization
 ;; ===================================
 (setq inhibit-startup-message t)    ;; Hide the startup message
+(setf fill-column 80)               ;; 80-column mode
 (load-theme 'material t)            ;; Load material theme
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'prog-mode-hook 'column-number-mode)
@@ -67,3 +68,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; ====================================
+;; LaTeX Setup
+;; ====================================
+(add-hook 'latex-mode-hook #'auto-fill-mode)
